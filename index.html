@@ -860,43 +860,39 @@
   </ul>
 </nav>
 <script>
-  // 1. Mobile Menu Toggle Logic
-  const toggle = document.getElementById('navToggle');
-  const linksContainer = document.getElementById('navLinks');
-  
-  toggle.addEventListener('click', () => {
-    toggle.classList.toggle('open');
-    linksContainer.classList.toggle('open');
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  const allLinks = document.querySelectorAll('.nav-link');
+
+  // Toggle mobile menu
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    navLinks.classList.toggle('open');
   });
 
-  // 2. Close menu when a link is clicked
-  document.querySelectorAll('.nav-link').forEach(link => {
+  // Close menu when a link is clicked
+  allLinks.forEach(link => {
     link.addEventListener('click', () => {
-      toggle.classList.remove('open');
-      linksContainer.classList.remove('open');
+      navToggle.classList.remove('open');
+      navLinks.classList.remove('open');
     });
   });
 
-  // 3. Highlight Active Section on Scroll
+  // Handle "Active" state on scroll
   const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('.nav-links a');
-
   window.addEventListener('scroll', () => {
-    let current = '';
-    
-    sections.forEach(section => {
+    let current = "";
+    sections.forEach((section) => {
       const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      // Triggers when the section is 150px from the top of the screen
-      if (pageYOffset >= (sectionTop - 150)) {
-        current = section.getAttribute('id');
+      if (window.pageYOffset >= sectionTop - 150) {
+        current = section.getAttribute("id");
       }
     });
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href').includes(current)) {
-        link.classList.add('active');
+    allLinks.forEach((link) => {
+      link.classList.remove("active");
+      if (link.getAttribute("href").includes(current)) {
+        link.classList.add("active");
       }
     });
   });
