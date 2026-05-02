@@ -2,7 +2,7 @@
 
 Personal portfolio for Alyssia Duplessis, Technical Program Manager & Operations Strategist. Built to reflect the same clarity and intentionality she brings to her work.
 
-🔗 **[dupdy.com](https://dupdy.com)** *(update with your live URL)*
+🔗 **[dupdy.com](https://dupdy.com)** 
 
 ---
 
