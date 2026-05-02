@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alyssia Duplessis — Technical Program Manager & Operations Strategist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f7f5f0;
+    --gray-100: #e8e6e1;
+    --gray-300: #c0bdb8;
+    --gray-500: #888580;
+    --gray-700: #444240;
+    --accent: #1a1a1a;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Instrument Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(247,245,240,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    text-decoration: none;
+    z-index: 101;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray-700);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--black); }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 101;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--black);
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--white);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 100;
+    }
+    .nav-links.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .nav-links a {
+      font-size: 1rem;
+      letter-spacing: 0.14em;
+      color: var(--black);
+    }
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 6rem 4rem 5rem;
+    position: relative;
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: var(--white);
+    opacity: 0.1;
+  }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-300);
+    margin-bottom: 2rem;
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--gray-300);
+  }
+
+  .hero-subtitle {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    color: var(--gray-300);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 340px;
+    margin-bottom: 3rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-white {
+    background: var(--white);
+    color: var(--black);
+  }
+
+  .btn-white:hover {
+    background: var(--gray-100);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--white);
+  }
+
+  .hero-right {
+    background: var(--gray-100);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-photo-area {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 8rem 3rem 0;
+    position: relative;
+  }
+
+  .hero-photo {
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.1);
+    display: block;
+  }
+
+  .hero-brand-strip {
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    border-top: 1px solid var(--gray-300);
+  }
+
+  .brand-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    white-space: nowrap;
+  }
+
+  .brand-logos {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  /* Logo SVG inline */
+  .logo-dd { height: 36px; width: auto; }
+  .logo-dupdy { height: 28px; width: auto; }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 3rem;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 48px;
+    background: var(--gray-300);
+  }
+
+  .section-heading {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+    color: var(--black);
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--black);
+    padding: 3rem;
+  }
+
+  .stats-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .stat-item {
+    padding: 2rem;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    color: var(--gray-700);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--gray-300);
+    color: var(--gray-700);
+    background: transparent;
+    transition: all 0.2s;
+  }
+
+  .skill-tag:hover {
+    border-color: var(--black);
+    color: var(--black);
+    background: var(--gray-100);
+  }
+
+  /* EXPERIENCE */
+  .experience-section { background: var(--black); color: var(--white); }
+
+  .experience-section .section-label { color: var(--gray-500); }
+  .experience-section .section-label::after { background: var(--gray-700); }
+  .experience-section .section-heading { color: var(--white); }
+
+  .exp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .exp-item:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
+
+  .exp-meta {
+    padding-top: 0.25rem;
+  }
+
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--gray-500);
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-company {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--gray-300);
+    line-height: 1.3;
+  }
+
+  .exp-type {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-top: 0.5rem;
+  }
+
+  .exp-role {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .exp-bullets li {
+    font-size: 0.88rem;
+    color: var(--gray-300);
+    line-height: 1.6;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gray-500);
+    font-size: 0.75rem;
+  }
+
+  /* EDUCATION & CERTS */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .edu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .edu-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .edu-item:first-child { border-top: 1px solid var(--gray-100); }
+
+  .edu-degree {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 0.25rem;
+  }
+
+  .edu-school {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    margin-bottom: 0.25rem;
+  }
+
+  .edu-date {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--gray-300);
+    text-transform: uppercase;
+  }
+
+  .edu-gpa {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    color: var(--gray-500);
+    margin-top: 0.25rem;
+  }
+
+  /* PRODUCT */
+  .product-section { background: var(--gray-100); }
+
+  .product-card {
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .product-content {
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .product-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-bottom: 1.25rem;
+  }
+
+  .product-title {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    margin-bottom: 1rem;
+  }
+
+  .product-desc {
+    font-size: 0.9rem;
+    color: var(--gray-700);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .product-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .product-tag {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    background: var(--gray-100);
+    color: var(--gray-700);
+  }
+
+  .product-visual {
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+  }
+
+  .rocket-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .rocket-text {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--gray-300);
+    text-align: center;
+    max-width: 240px;
+    line-height: 1.3;
+  }
+
+  /* WRITING */
+  .writing-card {
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    padding: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    transition: border-color 0.2s;
+  }
+
+  .writing-card:hover {
+    border-color: var(--black);
+  }
+
+  .writing-info { flex: 1; }
+
+  .writing-platform {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-bottom: 1rem;
+  }
+
+  .writing-title {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .writing-desc {
+    font-size: 0.9rem;
+    color: var(--gray-700);
+    line-height: 1.7;
+    max-width: 520px;
+  }
+
+  .writing-arrow {
+    font-family: var(--serif);
+    font-size: 3rem;
+    color: var(--gray-300);
+    flex-shrink: 0;
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .writing-card:hover .writing-arrow {
+    color: var(--black);
+    transform: translateX(6px);
+  }
+
+  /* CONTACT */
+  .contact-section { background: var(--black); color: var(--white); }
+
+  .contact-section .section-label { color: var(--gray-500); }
+  .contact-section .section-label::after { background: var(--gray-700); }
+  .contact-section .section-heading { color: var(--white); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-intro {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--gray-300);
+    line-height: 1.5;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+    color: inherit;
+  }
+
+  .contact-link-item:hover {
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .contact-link-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    min-width: 80px;
+  }
+
+  .contact-link-value {
+    font-size: 0.9rem;
+    color: var(--gray-300);
+    flex: 1;
+  }
+
+  .contact-link-arrow {
+    color: var(--gray-700);
+    font-size: 1rem;
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .contact-link-item:hover .contact-link-arrow {
+    color: var(--white);
+    transform: translateX(4px);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-name {
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--gray-500);
+  }
+
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--gray-700);
+  }
+
+  /* MARQUEE */
+  .marquee-bar {
+    background: var(--white);
+    border-top: 1px solid var(--gray-100);
+    border-bottom: 1px solid var(--gray-100);
+    padding: 1rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-track {
+    display: inline-flex;
+    animation: marquee 22s linear infinite;
+    gap: 0;
+  }
+
+  .marquee-item {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    padding: 0 2.5rem;
+  }
+
+  .marquee-sep {
+    color: var(--gray-300);
+    padding: 0 0.5rem;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--gray-100);
+  }
+
+  /* LEADERSHIP */
+  .leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--gray-100);
+  }
+
+  .leadership-item {
+    padding: 2rem;
+    border-right: 1px solid var(--gray-100);
+  }
+
+  .leadership-item:last-child { border-right: none; }
+
+  .leadership-role {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 0.25rem;
+  }
+
+  .leadership-org {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    margin-bottom: 0.25rem;
+  }
+
+  .leadership-dates {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray-300);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag { animation: fadeUp 0.6s ease 0.2s both; }
+  .hero-name { animation: fadeUp 0.6s ease 0.35s both; }
+  .hero-subtitle { animation: fadeUp 0.6s ease 0.5s both; }
+  .hero-ctas { animation: fadeUp 0.6s ease 0.65s both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { min-height: 60vh; padding: 7rem 2rem 3rem; }
+    .hero-right { min-height: 50vh; }
+    .hero-photo-area { padding-top: 3rem; }
+    .hero-photo { max-width: 280px; }
+
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+
+    section { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .edu-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .product-card { grid-template-columns: 1fr; }
+    .product-visual { min-height: 240px; }
+    .leadership-grid { grid-template-columns: 1fr; }
+    .leadership-item { border-right: none; border-bottom: 1px solid var(--gray-100); }
+    .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
+
+    .writing-card { flex-direction: column; gap: 1.5rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">A.D.</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about" class="nav-link">About</a></li>
+    <li><a href="#experience" class="nav-link">Experience</a></li>
+    <li><a href="#education" class="nav-link">Education</a></li>
+    <li><a href="#product" class="nav-link">Product</a></li>
+    <li><a href="#writing" class="nav-link">Writing</a></li>
+    <li><a href="#contact" class="nav-link">Contact</a></li>
+  </ul>
+</nav>
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('open');
+      links.classList.remove('open');
+    });
+  });
+</script>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;" id="top">
+  <div class="hero-left">
+    <p class="hero-tag">MBA · PMP · Technical Program Manager</p>
+    <h1 class="hero-name">Alyssia<br><em>Duplessis</em></h1>
+    <p class="hero-subtitle">From idea to infrastructure — I build the systems that keep ambitious teams moving forward. AI-driven, operations-obsessed, relentlessly intentional.</p>
+    <div class="hero-ctas">
+      <a href="#experience" class="btn btn-white">View Work</a>
+      <a href="#contact" class="btn btn-outline">Let's Connect</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-area">
+      <img src="62a643ee-5bd1-4e5c-851a-ea5b7075d02c.jpg" alt="Alyssia Duplessis" class="hero-photo">
+    </div>
+    <div class="hero-brand-strip">
+      <span class="brand-label">Ventures</span>
+      <div class="brand-logos">
+        <!-- Duplessis Dynamics logo (simplified SVG recreation) -->
+        <svg class="logo-dd" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Duplessis Dynamics">
+          <path d="M20 70 L50 10 L80 70" stroke="#1a1a1a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M35 70 L60 25 L85 70" stroke="#1a1a1a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M47 52 L60 40 L73 52" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <!-- Dupdy logo (simplified SVG recreation) -->
+        <svg class="logo-dupdy" viewBox="0 0 90 55" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Dupdy">
+          <ellipse cx="45" cy="34" rx="40" ry="14" fill="#1a1a1a"/>
+          <circle cx="45" cy="22" r="9" fill="#1a1a1a"/>
+          <ellipse cx="45" cy="34" rx="28" ry="8" fill="#e8e6e1"/>
+          <text x="45" y="54" font-family="sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#1a1a1a">dupdy</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span class="marquee-item">Technical Program Management</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">AI & Automation</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Operations Strategy</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Backend Development</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Agile & Waterfall</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">MBA · PMP Certified</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Change Management</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Data Analysis</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Healthcare Systems</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Technical Program Management</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">AI & Automation</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Operations Strategy</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Backend Development</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Agile & Waterfall</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">MBA · PMP Certified</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Change Management</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Data Analysis</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Healthcare Systems</span><span class="marquee-sep">·</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-number">$1M+</div>
+      <div class="stat-label">Healthcare Asset Turnover</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">23mo</div>
+      <div class="stat-label">Full-Cycle Delivery, Zero Disruptions</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">160+</div>
+      <div class="stat-label">Students Managed Daily</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">3.92</div>
+      <div class="stat-label">MBA GPA, University of the People</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" style="background: var(--white);">
+  <div class="section-inner">
+    <p class="section-label">Who I Am</p>
+    <div class="about-grid">
+      <div>
+        <h2 class="section-heading">Operator.<br>Builder.<br>Strategist.</h2>
+        <div class="about-text">
+          <p>I'm a Technical Program Manager and Operations Strategist based in Newport Beach, CA — and the founder of Duplessis Dynamics LLC, where I help startups, nonprofits, and healthcare organizations build scalable systems that actually work.</p>
+          <p>My work lives at the intersection of technology, process, and people. I bring structured program management, backend development, and a sharp eye for AI-driven efficiencies to every engagement — and I don't stop until the solution is sustainable.</p>
+          <p>Outside of client work, I create tools and guides for independent builders through Dupdy — because great ideas deserve great infrastructure.</p>
+        </div>
+      </div>
+      <div>
+        <p class="section-label" style="margin-bottom:1.5rem;">Core Capabilities</p>
+        <div class="skills-grid">
+          <span class="skill-tag">Project & Program Management</span>
+          <span class="skill-tag">Agile / Waterfall</span>
+          <span class="skill-tag">AI & Automation</span>
+          <span class="skill-tag">Python · Flask · SQL</span>
+          <span class="skill-tag">Backend Development</span>
+          <span class="skill-tag">Data Analysis</span>
+          <span class="skill-tag">Process Optimization</span>
+          <span class="skill-tag">Change Management</span>
+          <span class="skill-tag">Risk & Compliance</span>
+          <span class="skill-tag">Vendor Management</span>
+          <span class="skill-tag">Stakeholder Alignment</span>
+          <span class="skill-tag">Executive Communication</span>
+          <span class="skill-tag">Workflow Automation</span>
+          <span class="skill-tag">Systems Thinking</span>
+          <span class="skill-tag">Generative AI Tools</span>
+          <span class="skill-tag">Google Workspace</span>
+          <span class="skill-tag">QuickBooks</span>
+          <span class="skill-tag">Brand Strategy</span>
+          <span class="skill-tag">Inventory Systems</span>
+          <span class="skill-tag">Cross-Functional Leadership</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="experience-section">
+  <div class="section-inner">
+    <p class="section-label">Career</p>
+    <h2 class="section-heading">Experience</h2>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <p class="exp-date">Dec 2018 — Present</p>
+          <p class="exp-company">Duplessis Dynamics LLC</p>
+          <p class="exp-type">Fractional · Remote</p>
+        </div>
+        <div>
+          <h3 class="exp-role">Technical Program Manager & Operations Strategist</h3>
+          <ul class="exp-bullets">
+            <li>Led a full-cycle 23-month healthcare asset replacement program for orthopedic and imaging technology across multiple facilities — on schedule with zero service disruptions and $1M+ in managed turnover.</li>
+            <li>Managed audits, procurement, vendor negotiations, and logistics under an Agile framework for hospital networks.</li>
+            <li>Advised executive teams on operational strategy, process redesign, change management, and technology implementation.</li>
+            <li>Delivered AI-driven process improvements improving efficiency, transparency, and scalability across client organizations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <p class="exp-date">Apr 2024 — Nov 2024</p>
+          <p class="exp-company">Partners Personnel</p>
+          <p class="exp-type">Full-Time · Corona, CA</p>
+        </div>
+        <div>
+          <h3 class="exp-role">Server Developer</h3>
+          <ul class="exp-bullets">
+            <li>Led a comprehensive modernization of technology resources and branding to streamline operations and leadership workflows.</li>
+            <li>Implemented AI-enabled tools for executive leadership to support reporting and decision-making.</li>
+            <li>Built a company website, developed a custom inventory system, and modernized internal CRM for improved efficiency.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <p class="exp-date">Aug 2016 — Aug 2022</p>
+          <p class="exp-company">Think Together</p>
+          <p class="exp-type">Full-Time · San Bernardino, CA</p>
+        </div>
+        <div>
+          <h3 class="exp-role">Site Coordinator</h3>
+          <ul class="exp-bullets">
+            <li>Directed daily operations of a 160+ student district-aligned STEM enrichment program, consistently improving instructional quality through training, performance feedback, and workflow refinement.</li>
+            <li>Managed site-level budgets, payroll approvals, ADA tracking, and compliance reporting aligned with district and grant requirements.</li>
+            <li>Implemented a Coding and Robotics initiative for underserved youth; achieved CA grant compliance and strong district feedback.</li>
+            <li>Strengthened stakeholder partnerships with principals, district officials, and families.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <p class="exp-date">Apr 2014 — Jan 2015</p>
+          <p class="exp-company">Nordstrom</p>
+          <p class="exp-type">Part-Time · Orange, CA</p>
+        </div>
+        <div>
+          <h3 class="exp-role">Salesperson</h3>
+          <ul class="exp-bullets">
+            <li>Drove consistent sales growth through personalized service and relationship-building; exceeded monthly individual sales targets.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <p class="exp-date">Jun 2012 — Aug 2013</p>
+          <p class="exp-company">Saks Fifth Avenue</p>
+          <p class="exp-type">Full-Time · Ontario, CA</p>
+        </div>
+        <div>
+          <h3 class="exp-role">Associate Auditor</h3>
+          <ul class="exp-bullets">
+            <li>Performed financial and inventory audits to ensure compliance, risk reduction, and operational integrity.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background: var(--white);">
+  <div class="section-inner">
+    <p class="section-label">Academic & Professional</p>
+    <h2 class="section-heading">Education & Certifications</h2>
+    <div class="edu-grid">
+      <div>
+        <p class="section-label" style="margin-bottom:0.5rem;">Degrees</p>
+        <div class="edu-list">
+          <div class="edu-item">
+            <p class="edu-degree">MBA — Master of Business Administration</p>
+            <p class="edu-school">University of the People</p>
+            <p class="edu-date">Graduated Jan 2026</p>
+            <p class="edu-gpa">GPA: 3.92</p>
+          </div>
+          <div class="edu-item">
+            <p class="edu-degree">B.A. History & A.A. General Studies</p>
+            <p class="edu-school">Columbia College</p>
+            <p class="edu-date">Graduated April 2019</p>
+          </div>
+          <div class="edu-item">
+            <p class="edu-degree">High School Diploma</p>
+            <p class="edu-school">Rancho Cucamonga High School</p>
+            <p class="edu-date">Graduated May 2011</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="section-label" style="margin-bottom:0.5rem;">Certifications</p>
+        <div class="edu-list">
+          <div class="edu-item">
+            <p class="edu-degree">PMP — Project Management Professional</p>
+            <p class="edu-school">Project Management Institute</p>
+            <p class="edu-date">June 2025</p>
+          </div>
+          <div class="edu-item">
+            <p class="edu-degree">CS50: Introduction to AI with Python</p>
+            <p class="edu-school">HarvardX</p>
+            <p class="edu-date">July 2025</p>
+          </div>
+          <div class="edu-item">
+            <p class="edu-degree">CS50: Introduction to Computer Science</p>
+            <p class="edu-school">HarvardX</p>
+            <p class="edu-date">July 2025</p>
+          </div>
+          <div class="edu-item">
+            <p class="edu-degree">Google Data Analytics Specialization</p>
+            <p class="edu-school">Google</p>
+            <p class="edu-date">Jan 2026</p>
+          </div>
+          <div class="edu-item">
+            <p class="edu-degree">Google Project Management Specialization</p>
+            <p class="edu-school">Google</p>
+            <p class="edu-date">April 2025</p>
+          </div>
+          <div class="edu-item">
+            <p class="edu-degree">GenAI in Action: Impact & Possibilities</p>
+            <p class="edu-school">University of South Florida</p>
+            <p class="edu-date">March 2025</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leadership -->
+    <div style="margin-top: 4rem;">
+      <p class="section-label" style="margin-bottom:1.5rem;">Leadership & Involvement</p>
+      <div class="leadership-grid">
+        <div class="leadership-item">
+          <p class="leadership-role">Chief Financial Officer</p>
+          <p class="leadership-org">RC Haunt INC.</p>
+          <p class="leadership-dates">Oct 2015 — Oct 2018</p>
+        </div>
+        <div class="leadership-item">
+          <p class="leadership-role">Docent</p>
+          <p class="leadership-org">Sam and Alfreda Maloof Foundation for Arts and Crafts</p>
+          <p class="leadership-dates">Mar 2017 — Sep 2022</p>
+        </div>
+        <div class="leadership-item">
+          <p class="leadership-role">Student Education Docent</p>
+          <p class="leadership-org">The Getty Trust</p>
+          <p class="leadership-dates">Apr 2016 — Sep 2016</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT -->
+<section id="product" class="product-section">
+  <div class="section-inner">
+    <p class="section-label">Featured Product</p>
+    <h2 class="section-heading">Built to Launch</h2>
+    <a href="https://dupdy.gumroad.com/l/ytuqm" target="_blank" rel="noopener" style="text-decoration:none; display:block;">
+      <div class="product-card">
+        <div class="product-content">
+          <p class="product-eyebrow">Available Now on Gumroad</p>
+          <h3 class="product-title">Universal Product Launch Guide</h3>
+          <p class="product-desc">From Idea to Launched — Without the Chaos. A 90-Day simple roadmap that keeps you moving forward. Built for creators, makers, and independent builders who are ready to get paid for what they know.</p>
+          <div class="product-tags">
+            <span class="product-tag">Courses</span>
+            <span class="product-tag">Digital Products</span>
+            <span class="product-tag">Physical Goods</span>
+            <span class="product-tag">Services</span>
+            <span class="product-tag">Apps</span>
+          </div>
+          <span class="btn btn-white" style="align-self:flex-start;">Get the Guide →</span>
+        </div>
+        <div class="product-visual">
+          <div class="rocket-icon">
+            <svg width="64" height="80" viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M32 8C32 8 16 20 16 44H48C48 20 32 8 32 8Z" fill="#e8e6e1"/>
+              <rect x="22" y="44" width="20" height="16" rx="2" fill="#e8e6e1"/>
+              <path d="M16 44L8 56H22V44Z" fill="#888580"/>
+              <path d="M48 44L56 56H42V44Z" fill="#888580"/>
+              <ellipse cx="32" cy="72" rx="6" ry="8" fill="#888580" opacity="0.4"/>
+            </svg>
+            <p class="rocket-text">Get paid for what you know.</p>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- WRITING -->
+<section id="writing" style="background: var(--white);">
+  <div class="section-inner">
+    <p class="section-label">Writing</p>
+    <h2 class="section-heading">On Substack</h2>
+    <a href="https://substack.com/@dupdy" target="_blank" rel="noopener" style="text-decoration: none; display:block;">
+      <div class="writing-card">
+        <div class="writing-info">
+          <p class="writing-platform">Substack · @dupdy</p>
+          <h3 class="writing-title">Alyssia Duplessis</h3>
+          <p class="writing-desc">Ideas on operations, independent building, AI strategy, and what it actually takes to turn knowledge into products. Written for the builders who do the work.</p>
+        </div>
+        <div class="writing-arrow">→</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <p class="section-label">Get In Touch</p>
+    <div class="contact-grid">
+      <div>
+        <h2 class="section-heading">Let's build something worth building.</h2>
+        <p class="contact-intro">"Whether you need fractional leadership, a cleaner system, or a sharper strategy — I'd love to hear what you're working on."</p>
+        <a href="mailto:alyssia@dupdy.com" class="btn btn-white">Send an Email →</a>
+      </div>
+      <div>
+        <div class="contact-links">
+          <a href="mailto:alyssia@dupdy.com" class="contact-link-item">
+            <span class="contact-link-label">Email</span>
+            <span class="contact-link-value">alyssia@dupdy.com</span>
+            <span class="contact-link-arrow">→</span>
+          </a>
+          <a href="tel:9092569922" class="contact-link-item">
+            <span class="contact-link-label">Phone</span>
+            <span class="contact-link-value">(909) 256-9922</span>
+            <span class="contact-link-arrow">→</span>
+          </a>
+          <a href="https://linkedin.com/in/alyssiaduplessis" target="_blank" rel="noopener" class="contact-link-item">
+            <span class="contact-link-label">LinkedIn</span>
+            <span class="contact-link-value">linkedin.com/in/alyssiaduplessis</span>
+            <span class="contact-link-arrow">→</span>
+          </a>
+          <a href="https://substack.com/@dupdy" target="_blank" rel="noopener" class="contact-link-item">
+            <span class="contact-link-label">Substack</span>
+            <span class="contact-link-value">substack.com/@dupdy</span>
+            <span class="contact-link-arrow">→</span>
+          </a>
+          <a href="https://dupdy.gumroad.com/l/ytuqm" target="_blank" rel="noopener" class="contact-link-item">
+            <span class="contact-link-label">Product</span>
+            <span class="contact-link-value">Universal Product Launch Guide</span>
+            <span class="contact-link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Alyssia Duplessis — Newport Beach, CA</span>
+  <span class="footer-copy">© 2026 · Duplessis Dynamics LLC</span>
+</footer>
+
+</body>
+</html>
