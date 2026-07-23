@@ -10,17 +10,17 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --ink: #1C2B1F;
-    --cream: #F5F4F0;
-    --sand: #EAE8E2;
-    --stone: #6B6660;
-    --stone-light: #C7C4BC;
-    --teal: #4B7A45;
-    --teal-dark: #33472B;
-    --gold: #DC7B3E;
-    --gold-dark: #B5602F;
-    --coral: #8A3A15;
-    --coral-dark: #5E2A0C;
+    --ink: #16233A;
+    --cream: #DCE1E0;
+    --sand: #CBD3D1;
+    --stone: #4E5654;
+    --stone-light: #A9B3B0;
+    --teal: #A6193F;
+    --teal-dark: #6B0F28;
+    --gold: #7C98AC;
+    --gold-dark: #4F6B7E;
+    --coral: #24405E;
+    --coral-dark: #16283D;
     --serif: 'Fraunces', Georgia, serif;
     --sans: 'Instrument Sans', sans-serif;
     --mono: 'DM Mono', monospace;
@@ -46,7 +46,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.25rem 3rem;
-    background: rgba(255,249,238,0.92);
+    background: rgba(220,225,224,0.92);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--sand);
   }
@@ -166,9 +166,8 @@
 
   /* HERO */
   .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    min-height: 90vh;
+    display: flex;
     position: relative;
     overflow: hidden;
   }
@@ -177,9 +176,23 @@
     background: var(--ink);
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding: 6rem 4rem 5rem;
+    justify-content: center;
+    padding: 6rem 4rem;
     position: relative;
+    width: 100%;
+  }
+
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    right: -160px;
+    bottom: -160px;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: var(--teal-dark);
+    opacity: 0.5;
+    pointer-events: none;
   }
 
   .hero-tag {
@@ -193,7 +206,7 @@
 
   .hero-name {
     font-family: var(--serif);
-    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-size: clamp(3rem, 7vw, 6.5rem);
     font-weight: 900;
     line-height: 1;
     color: var(--cream);
@@ -205,11 +218,11 @@
 
   .hero-subtitle {
     font-family: var(--sans);
-    font-size: 0.98rem;
+    font-size: 1.05rem;
     color: var(--sand);
     font-weight: 300;
     line-height: 1.7;
-    max-width: 360px;
+    max-width: 480px;
     margin-bottom: 3rem;
   }
 
@@ -232,34 +245,8 @@
   .btn-white { background: var(--gold); color: var(--ink); }
   .btn-white:hover { background: var(--cream); transform: translateY(-1px); }
 
-  .btn-outline { background: transparent; color: var(--cream); border: 1px solid rgba(255,249,238,0.35); }
+  .btn-outline { background: transparent; color: var(--cream); border: 1px solid rgba(220,225,224,0.35); }
   .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-
-  .hero-right {
-    background: var(--sand);
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-photo-area {
-    flex: 1;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 8rem 3rem 0;
-    position: relative;
-  }
-
-  .hero-photo {
-    width: 100%;
-    max-width: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    border-radius: 20px 20px 0 0;
-  }
 
   /* SECTIONS */
   section { padding: 6rem 3rem; }
@@ -277,7 +264,21 @@
     gap: 1rem;
   }
 
-  .section-label::after { content: ''; display: block; height: 1px; width: 48px; background: var(--stone-light); }
+  .section-label::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 40px;
+    background: var(--stone-light);
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
 
   .section-heading {
     font-family: var(--serif);
@@ -290,7 +291,7 @@
   }
 
   /* STATS BAR */
-  .stats-bar { background: var(--gold); padding: 3rem; }
+  .stats-bar { background: var(--gold); padding: 3rem; position: relative; }
   .stats-grid {
     max-width: 1150px;
     margin: 0 auto;
@@ -298,7 +299,7 @@
     grid-template-columns: repeat(5, 1fr);
     gap: 2px;
   }
-  .stat-item { padding: 1.25rem 1.5rem; border-right: 1px solid rgba(31,46,43,0.15); }
+  .stat-item { padding: 1.25rem 1.5rem; border-right: 1px solid rgba(22,35,58,0.18); }
   .stat-item:last-child { border-right: none; }
   .stat-number {
     font-family: var(--serif);
@@ -334,12 +335,12 @@
     background: transparent;
     transition: all 0.2s;
   }
-  .skill-tag:hover { border-color: var(--teal); color: var(--teal); background: var(--sand); }
+  .skill-tag:hover { border-color: var(--coral); color: var(--coral); background: rgba(36,64,94,0.07); }
 
   /* EXPERIENCE */
   .experience-section { background: var(--ink); color: var(--cream); }
   .experience-section .section-label { color: var(--gold); }
-  .experience-section .section-label::after { background: rgba(255,249,238,0.15); }
+  .experience-section .section-label::after { background: rgba(220,225,224,0.15); }
   .experience-section .section-heading { color: var(--cream); }
 
   .exp-list { display: flex; flex-direction: column; gap: 0; }
@@ -348,9 +349,9 @@
     grid-template-columns: 220px 1fr;
     gap: 3rem;
     padding: 2.5rem 0;
-    border-bottom: 1px solid rgba(255,249,238,0.1);
+    border-bottom: 1px solid rgba(220,225,224,0.1);
   }
-  .exp-item:first-child { border-top: 1px solid rgba(255,249,238,0.1); }
+  .exp-item:first-child { border-top: 1px solid rgba(220,225,224,0.1); }
   .exp-meta { padding-top: 0.25rem; }
   .exp-date { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; color: var(--stone-light); margin-bottom: 0.5rem; }
   .exp-company { font-family: var(--serif); font-size: 0.95rem; font-weight: 700; color: var(--gold); line-height: 1.3; }
@@ -368,7 +369,7 @@
   .edu-item:first-child { border-top: 1px solid var(--sand); }
   .edu-degree { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: 0.25rem; }
   .edu-school { font-size: 0.85rem; color: var(--stone); margin-bottom: 0.25rem; }
-  .edu-date { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; color: var(--teal); text-transform: uppercase; }
+  .edu-date { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; color: var(--coral); text-transform: uppercase; }
   .edu-gpa { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.06em; color: var(--stone); margin-top: 0.25rem; }
 
   /* PRODUCT */
@@ -376,49 +377,14 @@
   .product-card {
     background: var(--cream);
     border-radius: 20px;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
     overflow: hidden;
   }
-  .product-content { padding: 3.5rem; display: flex; flex-direction: column; justify-content: center; }
+  .product-content { padding: 3.5rem; display: flex; flex-direction: column; }
   .product-eyebrow { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 1.25rem; }
   .product-title { font-family: var(--serif); font-size: 2rem; font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 1rem; }
-  .product-desc { font-size: 0.9rem; color: var(--stone); line-height: 1.7; margin-bottom: 1.75rem; }
+  .product-desc { font-size: 0.9rem; color: var(--stone); line-height: 1.7; margin-bottom: 1.75rem; max-width: 560px; }
   .product-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 2rem; }
   .product-tag { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.8rem; border-radius: 999px; background: var(--sand); color: var(--teal-dark); }
-
-  /* RECEIPT (signature element) */
-  .receipt {
-    background: var(--ink);
-    border-radius: 18px;
-    padding: 2.25rem 2rem 2rem;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 400px;
-  }
-  .receipt::before, .receipt::after {
-    content: '';
-    position: absolute;
-    width: 28px; height: 28px;
-    background: var(--sand);
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .receipt::before { left: -14px; }
-  .receipt::after { right: -14px; }
-  .receipt-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); text-align: center; margin-bottom: 1.25rem; }
-  .receipt-divider { border-top: 1px dashed rgba(255,249,238,0.25); margin: 1.25rem 0; }
-  .receipt-rows { display: flex; flex-direction: column; gap: 0.85rem; }
-  .receipt-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
-  .receipt-row-label { font-family: var(--mono); font-size: 0.75rem; color: var(--sand); }
-  .receipt-row-value { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--cream); }
-  .receipt-total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 0.5rem; }
-  .receipt-total-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
-  .receipt-total-value { font-family: var(--serif); font-size: 2.1rem; font-weight: 900; color: var(--gold); letter-spacing: -0.02em; }
-  .receipt-foot { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; color: var(--stone-light); text-align: center; margin-top: 1.5rem; }
 
   /* WRITING */
   .writing-card {
@@ -443,7 +409,7 @@
   /* CONTACT */
   .contact-section { background: var(--ink); color: var(--cream); }
   .contact-section .section-label { color: var(--gold); }
-  .contact-section .section-label::after { background: rgba(255,249,238,0.15); }
+  .contact-section .section-label::after { background: rgba(220,225,224,0.15); }
   .contact-section .section-heading { color: var(--cream); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
   .contact-intro { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; font-style: italic; color: var(--sand); line-height: 1.5; margin-bottom: 2.5rem; }
@@ -453,20 +419,20 @@
     align-items: center;
     gap: 1rem;
     padding: 1.25rem 1.5rem;
-    border: 1px solid rgba(255,249,238,0.1);
+    border: 1px solid rgba(220,225,224,0.1);
     border-radius: 14px;
     text-decoration: none;
     transition: border-color 0.2s, background 0.2s;
     color: inherit;
   }
-  .contact-link-item:hover { border-color: var(--gold); background: rgba(244,183,64,0.06); }
+  .contact-link-item:hover { border-color: var(--gold); background: rgba(124,152,172,0.1); }
   .contact-link-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone-light); min-width: 80px; }
   .contact-link-value { font-size: 0.9rem; color: var(--sand); flex: 1; }
   .contact-link-arrow { color: var(--stone-light); font-size: 1rem; transition: color 0.2s, transform 0.2s; }
   .contact-link-item:hover .contact-link-arrow { color: var(--gold); transform: translateX(4px); }
 
   /* FOOTER */
-  footer { background: var(--ink); border-top: 1px solid rgba(255,249,238,0.06); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+  footer { background: var(--ink); border-top: 1px solid rgba(220,225,224,0.06); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
   .footer-name { font-family: var(--serif); font-size: 0.9rem; font-weight: 700; color: var(--sand); }
   .footer-links { display: flex; align-items: center; gap: 1.5rem; }
   .footer-links a { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--stone-light); text-decoration: none; transition: color 0.2s; }
@@ -530,22 +496,15 @@
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; }
     .hero-left { min-height: 60vh; padding: 7rem 2rem 3rem; }
-    .hero-right { min-height: 50vh; }
-    .hero-photo-area { padding-top: 3rem; }
-    .hero-photo { max-width: 280px; border-radius: 16px 16px 0 0; }
 
     .stats-grid { grid-template-columns: 1fr 1fr; }
-    .stat-item { border-right: none; border-bottom: 1px solid rgba(31,46,43,0.15); }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(22,35,58,0.18); }
 
     section { padding: 4rem 1.5rem; }
     .about-grid { grid-template-columns: 1fr; gap: 3rem; }
     .edu-grid { grid-template-columns: 1fr; gap: 2rem; }
     .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .product-card { grid-template-columns: 1fr; }
-    .receipt { min-height: 280px; }
-    .receipt::before, .receipt::after { display: none; }
     .leadership-grid { grid-template-columns: 1fr; }
     .leadership-item { border-right: none; border-bottom: 1px solid var(--sand); }
     .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
@@ -627,15 +586,10 @@
   <div class="hero-left">
     <p class="hero-tag">MBA · PMP · Technical Program Manager</p>
     <h1 class="hero-name">Alyssia<br><em>Duplessis</em></h1>
-    <p class="hero-subtitle">From STEM program operations to healthcare systems to a product of my own — I build the structure that turns momentum into results. AI-driven, operations-obsessed, quietly relentless.</p>
+    <p class="hero-subtitle">From STEM program operations to hospital systems to a product of my own. I build the structure that turns momentum into results. Future focused, operations obsessed, quietly relentless.</p>
     <div class="hero-ctas">
       <a href="#experience" class="btn btn-white">View Work</a>
       <a href="#contact" class="btn btn-outline">Let's Connect</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-photo-area">
-      <img src="IMG_0472.jpeg" alt="Alyssia Duplessis" class="hero-photo">
     </div>
   </div>
 </section>
@@ -643,20 +597,20 @@
 <!-- MARQUEE -->
 <div class="marquee-bar">
   <div class="marquee-track">
-    <span class="marquee-item">Technical Program Management</span><span class="marquee-sep">·</span>
-    <span class="marquee-item">AI & Automation</span><span class="marquee-sep">·</span>
-    <span class="marquee-item">Operations Strategy</span><span class="marquee-sep">·</span>
-    <span class="marquee-item">Backend Development</span><span class="marquee-sep">·</span>
-    <span class="marquee-item">Product Launches</span><span class="marquee-sep">·</span>
-    <span class="marquee-item">MBA · PMP Certified</span><span class="marquee-sep">·</span>
-    <span class="marquee-item">Healthcare Systems</span><span class="marquee-sep">·</span>
-    <span class="marquee-item">Technical Program Management</span><span class="marquee-sep">·</span>
-    <span class="marquee-item">AI & Automation</span><span class="marquee-sep">·</span>
-    <span class="marquee-item">Operations Strategy</span><span class="marquee-sep">·</span>
-    <span class="marquee-item">Backend Development</span><span class="marquee-sep">·</span>
-    <span class="marquee-item">Product Launches</span><span class="marquee-sep">·</span>
-    <span class="marquee-item">MBA · PMP Certified</span><span class="marquee-sep">·</span>
-    <span class="marquee-item">Healthcare Systems</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Technical Program Management</span><span class="marquee-sep">•</span>
+    <span class="marquee-item">AI & Automation</span><span class="marquee-sep">•</span>
+    <span class="marquee-item">Operations Strategy</span><span class="marquee-sep">•</span>
+    <span class="marquee-item">Backend Development</span><span class="marquee-sep">•</span>
+    <span class="marquee-item">Product Launches</span><span class="marquee-sep">•</span>
+    <span class="marquee-item">MBA · PMP Certified</span><span class="marquee-sep">•</span>
+    <span class="marquee-item">Healthcare Systems</span><span class="marquee-sep">•</span>
+    <span class="marquee-item">Technical Program Management</span><span class="marquee-sep">•</span>
+    <span class="marquee-item">AI & Automation</span><span class="marquee-sep">•</span>
+    <span class="marquee-item">Operations Strategy</span><span class="marquee-sep">•</span>
+    <span class="marquee-item">Backend Development</span><span class="marquee-sep">•</span>
+    <span class="marquee-item">Product Launches</span><span class="marquee-sep">•</span>
+    <span class="marquee-item">MBA · PMP Certified</span><span class="marquee-sep">•</span>
+    <span class="marquee-item">Healthcare Systems</span><span class="marquee-sep">•</span>
   </div>
 </div>
 
@@ -669,7 +623,7 @@
     </div>
     <div class="stat-item">
       <div class="stat-number">23mo</div>
-      <div class="stat-label">Full-Cycle Delivery, Zero Disruptions</div>
+      <div class="stat-label">Full Cycle Delivery, Zero Disruptions</div>
     </div>
     <div class="stat-item">
       <div class="stat-number">160+</div>
@@ -694,9 +648,9 @@
       <div>
         <h2 class="section-heading">Operator.<br>Builder.<br>Storyteller.</h2>
         <div class="about-text">
-          <p>My path here wasn't a straight line. It started with six years running day-to-day operations for a 160+ student program — managing budgets, compliance, and stakeholder relationships across a district-aligned enrichment program.</p>
-          <p>In 2018, I founded Duplessis Dynamics LLC to take that same instinct for structure into fractional technical program management, helping startups, nonprofits, and healthcare systems build things that actually work — including a $1M+, 23-month hospital equipment turnover with zero service disruptions.</p>
-          <p>Most recently, I turned that expertise inward. I built UPLBS, a plain-language product launch framework, then used it to launch itself — growing my Substack, Dupdy, to 222 subscribers in four months and turning that into real revenue. Great ideas deserve great infrastructure. Mine included.</p>
+          <p>My path here wasn't a straight line. It started with six years running day to day operations for a 160+ student program at Think Together, managing budgets, compliance, and stakeholder relationships across a district aligned enrichment program.</p>
+          <p>In 2018, I founded Duplessis Dynamics LLC to take that same instinct for structure into fractional technical program management, helping startups, nonprofits, and healthcare systems build things that actually work, including a $1M+, 23 month hospital equipment turnover with zero service disruptions.</p>
+          <p>Most recently, I turned that expertise inward. I built UPLBS, a plain language product launch framework, then used it to launch itself, growing my Substack, Dupdy, to 222 subscribers in four months and turning that into real revenue. Great ideas deserve great infrastructure. Mine included.</p>
         </div>
       </div>
       <div>
@@ -729,15 +683,15 @@
 
       <div class="exp-item">
         <div class="exp-meta">
-          <p class="exp-date">Dec 2018 — Present</p>
+          <p class="exp-date">Dec 2018 to Present</p>
           <p class="exp-company">Duplessis Dynamics LLC</p>
-          <p class="exp-type">Fractional · Remote<br>Scaled down 2019–2024 during full-time roles;<br>full capacity since Nov 2024</p>
+          <p class="exp-type">Fractional · Remote<br>Scaled down 2019 to 2024 during full time roles;<br>full capacity since Nov 2024</p>
         </div>
         <div>
           <h3 class="exp-role">Technical Program Manager & Operations Strategist</h3>
           <ul class="exp-bullets">
-            <li><strong>Latest project — UPLBS:</strong> Designed a 6-phase, ~90-day product launch framework with a companion Notion template. Grew the companion Substack, Dupdy, to 222 subscribers in 4 months, converting readers into 79 guide purchases at $199 each — $15,721 in revenue at $0 overhead.</li>
-            <li><strong>$1M+ Healthcare Asset Turnover:</strong> Led a full-cycle 23-month surgical equipment replacement across a hospital network in partnership with Surgical Partners LLC and DBP Med — on schedule, zero service disruptions.</li>
+            <li><strong>Latest project, UPLBS:</strong> Designed a 6 phase, ~90 day product launch framework with a companion Notion template. Grew the companion Substack, Dupdy, to 222 subscribers in 4 months, converting readers into 79 guide purchases at $199 each, for $15,721 in revenue at $0 overhead.</li>
+            <li><strong>$1M+ Healthcare Asset Turnover:</strong> Led a full cycle 23 month surgical equipment replacement across a hospital network in partnership with Surgical Partners LLC and DBP Med, on schedule, zero service disruptions.</li>
             <li>Advised executive teams on operational strategy, process redesign, change management, and technology implementation.</li>
           </ul>
         </div>
@@ -745,15 +699,15 @@
 
       <div class="exp-item">
         <div class="exp-meta">
-          <p class="exp-date">Apr 2024 — Nov 2024</p>
+          <p class="exp-date">Apr 2024 to Nov 2024</p>
           <p class="exp-company">Partners Personnel</p>
-          <p class="exp-type">Full-Time · Corona, CA<br>Functioning as Technical Operations<br>Manager & Executive Assistant</p>
+          <p class="exp-type">Full Time · Corona, CA<br>Functioning as Technical Operations<br>Manager & Executive Assistant</p>
         </div>
         <div>
           <h3 class="exp-role">Server Developer</h3>
           <ul class="exp-bullets">
             <li>Led a comprehensive modernization of technology resources and branding to streamline operations and leadership workflows.</li>
-            <li>Implemented AI-enabled tools for executive leadership to support reporting and decision-making.</li>
+            <li>Implemented AI enabled tools for executive leadership to support reporting and decision making.</li>
             <li>Built a company website, developed a custom inventory system, and modernized internal CRM for improved efficiency.</li>
           </ul>
         </div>
@@ -761,15 +715,15 @@
 
       <div class="exp-item">
         <div class="exp-meta">
-          <p class="exp-date">Aug 2016 — Aug 2022</p>
+          <p class="exp-date">Aug 2016 to Aug 2022</p>
           <p class="exp-company">Think Together</p>
-          <p class="exp-type">Full-Time · San Bernardino, CA</p>
+          <p class="exp-type">Full Time · San Bernardino, CA</p>
         </div>
         <div>
           <h3 class="exp-role">Site Coordinator</h3>
           <ul class="exp-bullets">
-            <li>Directed daily operations of a 160+ student district-aligned STEM enrichment program, consistently improving instructional quality through training, performance feedback, and workflow refinement.</li>
-            <li>Managed an annual program budget of $2,750; supplemented it by securing community donations that delivered a $1,200 direct impact for students, and sourced free enrichment resources — including VidCode — to expand access at no added cost.</li>
+            <li>Directed daily operations of a 160+ student district aligned STEM enrichment program, consistently improving instructional quality through training, performance feedback, and workflow refinement.</li>
+            <li>Managed an annual program budget of $2,750; supplemented it by securing community donations that delivered a $1,200 direct impact for students, and sourced free enrichment resources, including VidCode, to expand access at no added cost.</li>
             <li>Implemented a Coding and Robotics initiative for underserved youth; achieved CA grant compliance and strong district feedback.</li>
             <li>Strengthened stakeholder partnerships with principals, district officials, and families.</li>
           </ul>
@@ -790,7 +744,7 @@
         <p class="section-label" style="margin-bottom:0.5rem;">Degrees</p>
         <div class="edu-list">
           <div class="edu-item">
-            <p class="edu-degree">MBA — Master of Business Administration</p>
+            <p class="edu-degree">MBA: Master of Business Administration</p>
             <p class="edu-school">University of the People</p>
             <p class="edu-date">Graduated Jan 2026</p>
             <p class="edu-gpa">GPA: 3.92</p>
@@ -798,7 +752,7 @@
           <div class="edu-item">
             <p class="edu-degree">B.A. History & A.A. General Studies</p>
             <p class="edu-school">Columbia College</p>
-            <p class="edu-date">Jan 2015 — Apr 2019</p>
+            <p class="edu-date">Jan 2015 to Apr 2019</p>
           </div>
           <div class="edu-item">
             <p class="edu-degree">High School Diploma</p>
@@ -811,7 +765,7 @@
         <p class="section-label" style="margin-bottom:0.5rem;">Certifications</p>
         <div class="edu-list">
           <div class="edu-item">
-            <p class="edu-degree">PMP — Project Management Professional</p>
+            <p class="edu-degree">PMP: Project Management Professional</p>
             <p class="edu-school">Project Management Institute</p>
             <p class="edu-date">June 2025</p>
           </div>
@@ -846,19 +800,42 @@
         <div class="leadership-item">
           <p class="leadership-role">Chief Financial Officer</p>
           <p class="leadership-org">RC Haunt INC.</p>
-          <p class="leadership-dates">Oct 2015 — Oct 2018 (concurrent with B.A. studies)</p>
+          <p class="leadership-dates">Oct 2015 to Oct 2018 (concurrent with B.A. studies)</p>
           <p class="leadership-desc">Accounted for all nonprofit donations directed to Loma Linda Children's Hospital, ensuring funds and distributions stayed aligned with the program's religious context.</p>
         </div>
         <div class="leadership-item">
           <p class="leadership-role">Docent</p>
           <p class="leadership-org">Sam and Alfreda Maloof Foundation for Arts and Crafts</p>
-          <p class="leadership-dates">Mar 2017 — Sep 2022</p>
+          <p class="leadership-dates">Mar 2017 to Sep 2022</p>
         </div>
         <div class="leadership-item">
           <p class="leadership-role">Student Education Docent</p>
           <p class="leadership-org">The Getty Trust</p>
-          <p class="leadership-dates">Apr 2016 — Sep 2016</p>
+          <p class="leadership-dates">Apr 2016 to Sep 2016</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT -->
+<section id="product" class="product-section">
+  <div class="section-inner">
+    <p class="section-label">Featured Product</p>
+    <h2 class="section-heading">Built to Launch</h2>
+    <div class="product-card">
+      <div class="product-content">
+        <p class="product-eyebrow">Available Now on Gumroad</p>
+        <h3 class="product-title">Universal Product Launch Guide</h3>
+        <p class="product-desc">From Idea to Launched: Without the Chaos. A 90 day roadmap that keeps you moving forward, built for creators, makers, and independent builders ready to get paid for what they know. I used it to launch itself.</p>
+        <div class="product-tags">
+          <span class="product-tag">Courses</span>
+          <span class="product-tag">Digital Products</span>
+          <span class="product-tag">Physical Goods</span>
+          <span class="product-tag">Services</span>
+          <span class="product-tag">Apps</span>
+        </div>
+        <a href="https://dupdy.gumroad.com/l/ytuqm" target="_blank" rel="noopener" class="btn btn-white" style="align-self:flex-start;">Get the Guide →</a>
       </div>
     </div>
   </div>
@@ -874,7 +851,7 @@
         <div class="writing-info">
           <p class="writing-platform">Substack · @dupdy · 222 Subscribers</p>
           <h3 class="writing-title">Alyssia Duplessis</h3>
-          <p class="writing-desc">Personal stories and industry commentary on operations, independent building, and AI strategy — what it actually takes to turn knowledge into products. Written for the builders who do the work.</p>
+          <p class="writing-desc">Personal stories and industry commentary on operations, independent building, and AI strategy, what it actually takes to turn knowledge into products. Written for the builders who do the work.</p>
         </div>
         <div class="writing-arrow">→</div>
       </div>
@@ -889,7 +866,7 @@
     <div class="contact-grid">
       <div>
         <h2 class="section-heading">Let's build something worth building.</h2>
-        <p class="contact-intro">"Whether you need fractional leadership, a cleaner system, or a sharper strategy — I'd love to hear what you're working on."</p>
+        <p class="contact-intro">"Whether you need fractional leadership, a cleaner system, or a sharper strategy, I'd love to hear what you're working on."</p>
         <a href="mailto:alyssia@dupdy.com" class="btn btn-white">Send an Email →</a>
       </div>
       <div>
@@ -901,7 +878,7 @@
           </a>
           <a href="tel:9092569922" class="contact-link-item">
             <span class="contact-link-label">Phone</span>
-            <span class="contact-link-value">(909) 256-9922</span>
+            <span class="contact-link-value">(909) 256 9922</span>
             <span class="contact-link-arrow">→</span>
           </a>
           <a href="https://linkedin.com/in/alyssiaduplessis" target="_blank" rel="noopener" class="contact-link-item">
@@ -939,8 +916,8 @@
       <h3>Contact links</h3>
       <p>The email, phone, and social links on this site open your own device's mail, phone, or browser app. Any information you choose to send that way (for example, emailing alyssia@dupdy.com) is handled directly between you and Alyssia Duplessis / Duplessis Dynamics LLC, and is used only to respond to your message.</p>
 
-      <h3>Third-party services</h3>
-      <p>This site links out to third-party platforms — including Substack, Gumroad, and LinkedIn — and loads fonts from Google Fonts. Those services may collect data (such as IP address or usage data) under their own privacy policies once you visit or interact with them. This site has no control over, and is not responsible for, those third parties' practices.</p>
+      <h3>Third party services</h3>
+      <p>This site links out to third party platforms, including Substack, Gumroad, and LinkedIn, and loads fonts from Google Fonts. Those services may collect data (such as IP address or usage data) under their own privacy policies once you visit or interact with them. This site has no control over, and is not responsible for, those third parties' practices.</p>
 
       <h3>Hosting</h3>
       <p>This site is hosted on GitHub Pages, which may log standard server request data (such as IP address and browser type) as part of normal web hosting. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub's Privacy Statement</a> for details.</p>
@@ -953,7 +930,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-name">Alyssia Duplessis — Newport Beach, CA</span>
+  <span class="footer-name">Alyssia Duplessis, Newport Beach, CA</span>
   <div class="footer-links">
     <a href="#privacy">Privacy Policy</a>
   </div>
